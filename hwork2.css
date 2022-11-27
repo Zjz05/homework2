@@ -1,0 +1,270 @@
+/*For all sections*/
+body {
+    background: rgb(243, 243, 240);
+    margin: 30px;
+    font-family:cambria;
+    font-size: 1.5em;
+    text-align:justify;
+
+    display: grid;
+    grid-gap: 10px;
+    
+    grid-template-areas:
+        "header"
+        "hero"
+        "body"
+        "footer"
+}
+
+.notes {
+    font-size: medium;
+}
+
+
+
+/*Header section*/
+header {
+    background:rgb(255, 214, 221);
+    padding: 10px;
+    grid-area: header;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 10px;
+    grid-template-areas:
+        "brand brand"
+        "nav tools";
+}
+
+header .brand {
+    justify-self: center;
+    grid-area: brand;
+}
+
+header .nav{
+   justify-self:center;
+   grid-area: nav;
+   font-weight: bold;
+}
+
+/*Navigation Hover*/
+header ul{
+    
+    list-style: none;
+    margin:0;
+    padding: 2px;
+}
+
+header ul li{
+    background:rgb(248, 224, 228);
+    display:block;
+    float: left;
+    padding: 5px;
+    margin-right: 2px;
+    position:relative;
+
+}
+header ul li:hover{
+    opacity:0.5;
+    cursor: pointer;
+    background-color: beige;
+}
+
+
+header .tools{
+    grid-area: tools;
+    justify-self: right;
+}
+
+/*Hero section*/
+.hero {
+    background:  rgb(255, 214, 221);
+    padding: 10px;
+    grid-area: hero;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    grid-template-areas: 
+    "herotitle"
+    "feature"
+    "action";
+}
+
+.hero .action {
+    background: rgb(248, 224, 228);
+    grid-area: action;
+}
+
+.hero .feature {
+    background: rgb(248, 224, 228);
+    grid-area: feature;
+}
+
+/*Body section*/
+main {
+    background: rgb(255, 214, 221);
+    padding: 10px;
+    grid-area:body;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap:10px;
+    grid-template-areas: 
+       "bodyfeature"
+       "ad"
+       "listing";
+}
+
+main .bodyfeature {
+    background: rgb(248, 224, 228);
+    grid-area: bodyfeature;
+}
+
+main .mobile-ad{
+    grid-area: ad;
+}
+
+main .listing{
+    background: rgb(248, 224, 228);
+    grid-area: listing;
+}
+
+/*Ad Hover*/
+.desktop-ad:hover{
+    opacity: 0.5;
+}
+
+.mobile-ad:hover{
+    opacity: 0.5;
+}
+
+/*Footer section*/
+footer {
+    background:rgb(255, 214, 221) ;
+    padding: 10px;
+    grid-area:footer;
+    
+    font-size: medium;
+    font-weight: bold;
+    text-align: left;
+}
+
+/*Sidebar section*/
+.sidebar {
+    background:rgb(255, 214, 221);
+    padding: 10px;
+    grid-area:sidebar;
+
+    display:none;
+}
+
+.sidebar .sidebar-feature{
+    background:rgb(248, 224, 228);
+}
+
+/*Desktop-ad setting*/
+.desktop-ad{
+    background: rgb(255, 214, 221) ;
+    padding: 10px;
+    grid-area:ad;
+}
+
+/*Hide non-mobile sections*/
+.desktop-ad{
+    display: none;
+}
+
+.hero .feature{
+    display:none;
+}
+
+/*Tablet-friendly adjustions*/
+@media only screen and (min-width:576px){
+    body{
+        grid-template-rows:auto auto 1fr auto auto;
+        grid-template-areas: 
+        "header"
+        "hero"
+        "body"
+        "sidebar"
+        "footer";
+    }
+    /*Header layout*/
+    header{
+        grid-template-columns:1fr 2fr 1fr;
+        grid-template-areas: "brand nav tools";
+    }
+    header .nav{
+        padding-top: 70px;
+    }
+    header .tools{
+        padding-top:80px;
+    }
+    /*Hero layout*/
+    .hero{
+        grid-template-areas:
+        "herotitle"
+        "feature"
+        "action";
+    }
+    .hero .feature{
+        display: block;
+    }
+    /*Body layout*/
+    main{
+        grid-template-columns:1fr 240px;
+        grid-template-rows: auto 1fr;
+        grid-template-areas: 
+        "bodytitle bodytitle"
+        "bodyfeature ad"
+        "listing listing";
+    }
+    /*Sidebar layout*/
+    .sidebar{
+        display: grid;
+    }
+    .sidebar .sidebar-feature{
+        display: block;
+    }
+}
+
+/*Desktop-friendly adjustions*/
+
+@media only screen and (min-width:992px){
+    body{
+        grid-template-columns:2fr 240px;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas: 
+        "header header"
+        "hero ad"
+        "body sidebar"
+        "footer footer";
+    }
+    /*Header layout*/
+    header .nav{
+        justify-self: left;
+    }
+    /*Hero layout*/
+    .hero{
+        grid-template-columns:2fr 1fr;
+        grid-template-areas:
+        "herotitle herotitle"
+        "feature action";
+    }
+    /*Body layout*/
+    main{
+        grid-template-columns:1fr 2fr;
+        grid-template-rows:1fr;
+        grid-template-areas:
+        "bodytitle bodytitle"
+        "bodyfeature listing";
+    }
+    .mobile-ad{
+        display: none;
+    }
+    .desktop-ad{
+        display: grid;
+        justify-self: center;
+    }
+}
